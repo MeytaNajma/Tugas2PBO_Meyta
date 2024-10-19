@@ -1,0 +1,90 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package tugas_2;
+
+import java.util.Scanner;
+/**
+ *
+ * @author userh
+ */
+public class Tugas_2 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        System.out.println("      KALKULATOR ZAKAT MAL       ");
+        System.out.println("=================================");
+
+        Scanner scanner = new Scanner(System.in);
+        boolean lanjut = true;
+
+        while (lanjut) {
+            System.out.println("\nLengkapi Data Dibawah Ini");
+            
+            System.out.print("Nama: ");
+            String nama = scanner.nextLine();
+            
+            System.out.print("Alamat: ");
+            String alamat = scanner.nextLine();
+
+            System.out.println("\nPilih jenis harta:");
+            System.out.println("1. Uang");
+            System.out.println("2. Emas");
+            System.out.println("3. Perak");
+            System.out.print("Masukkan pilihan : ");
+            
+            int pilihan = scanner.nextInt();
+            scanner.nextLine(); 
+
+            double totalHarta = 0;
+
+            switch (pilihan) {
+                case 1: // Uang
+                    System.out.print("Masukkan nominal uang (Rp): ");
+                    totalHarta = scanner.nextDouble();
+                    scanner.nextLine(); 
+                    break;
+
+                case 2: // Emas
+                    System.out.print("Masukkan berat emas (gr): ");
+                    double beratEmas = scanner.nextDouble();
+                    scanner.nextLine(); 
+                    totalHarta = beratEmas * 1_000_000; 
+                    break;
+
+                case 3: // Perak
+                    System.out.print("Masukkan berat perak (gr): ");
+                    double beratPerak = scanner.nextDouble();
+                    scanner.nextLine(); 
+                    totalHarta = beratPerak * 16_000; 
+                    break;
+
+                default:
+                    System.out.println("Pilihan tidak valid! Silakan coba lagi.");
+                    continue; 
+            }
+
+            double zakat = totalHarta * 0.025;
+
+            System.out.println("\n------ Hasil Perhitungan Zakat ------");
+            System.out.println("\nNama: " + nama);
+            System.out.println("Alamat: " + alamat);
+            System.out.println("Jumlah zakat yang harus dibayarkan: Rp. " + zakat);
+            System.out.println("Sisa harta setelah zakat: Rp. " + (totalHarta - zakat));
+
+            System.out.println("\n======================================================");
+
+            System.out.print("Apakah Anda ingin menghitung zakat lagi? (y/t): ");
+            String jawaban = scanner.nextLine().trim().toLowerCase();
+
+            if (!jawaban.equals("y")) {
+                lanjut = false; 
+            }
+        }
+
+        System.out.println("\nTerima kasih, telah menggunakan kalkulator zakat mal!");
+    }
+}
